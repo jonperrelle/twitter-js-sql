@@ -1,4 +1,5 @@
 html,
+
 body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
@@ -24,6 +25,9 @@ body {
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
+li {
+  list-style: none;
+}
 
 #wrap > .container {
   padding: 60px 15px 0;
@@ -43,6 +47,10 @@ code {
 
 .tweetbox {
   padding: 7px;
+  margin: 20px;
+}
+img {
+  margin: 20px;
 }
 
 .tweetbox img {

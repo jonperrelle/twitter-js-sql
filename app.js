@@ -25,9 +25,9 @@ swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) 
     console.log(output);
 });
 
-// app.get('/', function (req, res) {
-//   res.render('index', locals);
-// });
+app.get('/', function (req, res) {
+  res.render('index', locals);
+});
 
 app.listen(3000, function() {
   console.log('Listening on port 3000!');

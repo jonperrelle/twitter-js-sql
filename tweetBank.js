@@ -3,7 +3,8 @@ var _ = require('lodash');
 var data = [];
 
 function add (name, text) {
-  data.push({ name: name, text: text });
+  var id = data.length+1;
+  data.push({ name: name, text: text, id: id });
 }
 
 function list () {
@@ -39,3 +40,6 @@ var getFakeTweet = function() {
 for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
+
+// console.log(data);
+// console.log(find('Nimit'));
