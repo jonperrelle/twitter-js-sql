@@ -2,8 +2,14 @@ var express = require('express');
 var app = express();
 var swig = require('swig');
 var routes = require('./routes/');
+var socketio = require('socket.io');
 
-app.use('/', routes);
+var server = app.listen(3000, function() {
+  console.log('Listening on port 3000!');
+});
+var io = socketio.listen(server);
+
+app.use('/', routes(io));
 
 
 // swig integrations
@@ -27,8 +33,4 @@ swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) 
 
 app.get('/', function (req, res) {
   res.render('index', locals);
-});
-
-app.listen(3000, function() {
-  console.log('Listening on port 3000!');
 });
