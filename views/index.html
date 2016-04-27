@@ -10,8 +10,6 @@
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
       100 followers
-    </div>
-    <div class="col-md-9">
 
       <!--posting-->
       {% if showForm %}
@@ -20,19 +18,25 @@
           <input name="name" value="{{userName}}" type="text" id="name_field" />
 
           <label for="text_field">Text:</label>
-          <input name="text" type="text" id="text_field" style="width: 350px;" />
+          <input name="text" type="text" id="text_field" />
 
           <input type="submit" value="Submit" />
         </form>
       {% endif %}
 
+    </div>
+    <div class="col-md-9">
+
       <!-- display tweets here -->
       <div id="tweets">
       {% for tweet in tweets %}
-        <li id="tweet-{{tweet.id}}"> <div class="tweetbox"><img></div><b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b> <br>
-          <a href="/tweets/{{tweet.id}}">{{tweet.text}}</a> <br>
-          Re-Tweet
-        </li>
+      <div class="tweetbox">
+        <img>
+        <div class="content">
+          <p class="by"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></p>
+          <p><a href="/tweets/{{tweet.id}}">{{tweet.text}}</a></p>
+        </div>
+      </div>
       {% endfor %}
     </div>
 

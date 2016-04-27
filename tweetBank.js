@@ -3,13 +3,14 @@ var _ = require('lodash');
 var data = [];
 
 function add (name, text) {
-  var id = data.length+1;
-  var newTweet = { name: name, text: text, id: id }
+  var newTweet = { name: name, text: text, id: data.length+1 }
   data.push(newTweet);
   return newTweet;
 }
 
 function list () {
+  // clones the data array, so any subsequent modifications do not effect the original array
+  // list() and data will not be the same object in memory, but will look the same
   return _.cloneDeep(data);
 }
 
@@ -41,7 +42,4 @@ var getFakeTweet = function() {
 
 for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
-}
-
-// console.log(data);
-// console.log(find('Nimit'));
+};
