@@ -5,8 +5,15 @@ var Sequelize = require('sequelize');
 // which abstractly represents our app's sqlite database
 var twitterjsDB = new Sequelize('twitterjs', 'root', null, {
   dialect: 'sqlite',
-  storage: '../../path/to/your/twitterjs.db'
+  storage: '../twitterjs.db'
 });
+
+var Tweet = require('./tweet')(twitterjsDB);
+var User = require('./user')(twitterjsDB);
+
+// adds a UserId foreign key to the `Tweets` table
+User.hasMany(Tweet);
+Tweet.belongsTo(User);
 
 // open the connection to our database
 twitterjsDB
@@ -17,3 +24,21 @@ twitterjsDB
 .catch(function (err) {
   console.error('Problem connecting to the database:', err);
 });
+
+User.findOne()
+.then(function (user) {
+  // big old crazy object, but no name or
+  // id anywhere in there. Hmmmmmm…
+  console.log(user);
+});
+
+// User.findOne()
+// .then(function (user) {
+//   // produces expected output. WAT.
+//   console.log(user.name);
+// });
+
+module.exports = {
+  User: User,
+  Tweet: Tweet
+};

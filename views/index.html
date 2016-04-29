@@ -15,7 +15,7 @@
       {% if showForm %}
         <form action="/tweets" method="POST">
           <label for="name_field">Name:</label>
-          <input name="name" value="{{userName}}" type="text" id="name_field" />
+          <input name="name" value="{{username}}" type="text" id="name_field" />
 
           <label for="text_field">Text:</label>
           <input name="text" type="text" id="text_field" />
@@ -34,7 +34,7 @@
         <img>
         <div class="content">
           <p class="by"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></p>
-          <p><a href="/tweets/{{tweet.id}}">{{tweet.text}}</a></p>
+          <p><a href="/tweets/{{tweet.tweet_id}}">{{tweet.content}}</a></p>
         </div>
       </div>
       {% endfor %}
